@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Áreas de práctica", href: "#areas" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Equipo", href: "#equipo" },
-  { label: "Contacto", href: "#contacto" },
 ];
 
 const menuVariants = {
@@ -115,11 +114,11 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               className={`rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
                 scrolled
-                  ? "bg-navy text-white hover:bg-navy-light"
+                  ? "bg-navy text-white hover:bg-navy-mid"
                   : "bg-white/10 border border-white/30 text-white hover:bg-white/20"
               }`}
             >
-              Agendar consulta
+              Solicitar consulta
             </motion.a>
           </div>
 
@@ -184,11 +183,11 @@ export default function Navbar() {
               ))}
               <motion.a
                 href="#contacto"
-                variants={itemVariants}
                 onClick={handleLinkClick}
-                className="mt-2 block rounded-lg bg-navy px-3 py-2.5 text-center text-base font-medium text-white transition-colors hover:bg-navy-light"
+                variants={itemVariants}
+                className="mt-2 block rounded-lg bg-navy px-3 py-2.5 text-center text-base font-medium text-white transition-colors hover:bg-navy-mid"
               >
-                Agendar consulta
+                Solicitar consulta
               </motion.a>
             </div>
           </motion.div>

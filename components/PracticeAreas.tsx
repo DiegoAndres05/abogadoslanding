@@ -6,7 +6,7 @@ import PracticeAreaRowMotion from "./PracticeAreaRowMotion";
 
 export default function PracticeAreas() {
   return (
-    <section id="areas" className="bg-navy py-20 sm:py-28">
+    <section id="areas" className="bg-ivory py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <FadeIn>
@@ -15,12 +15,12 @@ export default function PracticeAreas() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl font-semibold text-navy sm:text-4xl">
               Soluciones legales para decisiones importantes
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mt-4 text-lg text-white/70">
+            <p className="mt-4 text-lg text-navy/70">
               Soluciones jurídicas, tributarias y financieras integradas para
               empresas, inversionistas, entidades y familias.
             </p>

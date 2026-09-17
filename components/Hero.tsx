@@ -19,7 +19,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-mid to-charcoal" />
         <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/80" />
       </motion.div>
