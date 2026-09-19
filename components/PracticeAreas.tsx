@@ -1,4 +1,5 @@
 import { ArrowUpRight, Check } from "lucide-react";
+import Image from "next/image";
 import { practiceAreas } from "@/data/practiceAreas";
 import { practiceAreaVisualClasses } from "@/components/practiceAreaVisuals";
 import FadeIn from "./FadeIn";
@@ -6,8 +7,14 @@ import PracticeAreaRowMotion from "./PracticeAreaRowMotion";
 
 export default function PracticeAreas() {
   return (
-    <section id="areas" className="bg-ivory py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="areas"
+      className="relative overflow-hidden bg-navy py-20 sm:py-28"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-mid to-charcoal" />
+      <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <FadeIn>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
@@ -15,12 +22,12 @@ export default function PracticeAreas() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-navy sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
               Soluciones legales para decisiones importantes
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mt-4 text-lg text-navy/70">
+            <p className="mt-4 text-lg text-white/70">
               Soluciones jurídicas, tributarias y financieras integradas para
               empresas, inversionistas, entidades y familias.
             </p>
@@ -38,6 +45,13 @@ export default function PracticeAreas() {
                   data-reveal="panel"
                   className={`relative isolate aspect-[5/4] min-h-[16rem] overflow-hidden rounded-3xl sm:min-h-[18rem] ${practiceAreaVisualClasses[area.visualVariant]}`}
                 >
+                  <Image
+                    src={area.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/35 to-transparent" />
                   <div className="relative z-10 flex h-full flex-col justify-end gap-4 p-6 sm:p-8">
                     <h3 className="font-serif text-2xl font-semibold leading-snug text-white sm:text-3xl">

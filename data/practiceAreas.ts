@@ -24,6 +24,7 @@ export interface PracticeArea {
   id: number;
   slug: string;
   title: string;
+  image: string;
   whyItMatters: string;
   featuredSpecialties: string[];
   visualVariant: VisualVariant;
@@ -36,6 +37,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 1,
     slug: "corporativo-ma",
     title: "Corporativo, M&A e Inversión Extranjera",
+    image: "/practice-areas/corporate.jpg",
     whyItMatters:
       "Una operación mal estructurada puede diluir control, bloquear financiamiento o exponer a los socios más allá de lo previsto. Las empresas e inversionistas necesitan vehículos claros para crear, adquirir, reorganizar y proteger el negocio. Integramos la lectura societaria, tributaria y de inversión extranjera desde el diseño del acuerdo. Así cada transacción avanza con gobernanza, plazos y salidas definidos. El objetivo es ejecutar el negocio, no solo firmar documentos.",
     featuredSpecialties: [
@@ -72,6 +74,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 2,
     slug: "tributario-precios-transferencia",
     title: "Tributario y Precios de Transferencia",
+    image: "/practice-areas/tax.jpg",
     whyItMatters:
       "El entorno fiscal es más exigente y las autoridades cruzan información entre jurisdicciones. Una estructura improvisada puede generar doble imposición, ajustes millonarios o riesgos reputacionales. Planeamos la carga tributaria con cumplimiento y defendibilidad, no con atajos. Documentamos operaciones con vinculados bajo estándares que resistan revisión. El resultado es previsibilidad fiscal para la operación y para los socios.",
     featuredSpecialties: [
@@ -102,6 +105,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 3,
     slug: "dian-litigios-controversias",
     title: "DIAN, Litigios y Controversias Tributarias",
+    image: "/practice-areas/litigation.jpg",
     whyItMatters:
       "Las fiscalizaciones de DIAN y de autoridades territoriales son cada vez más agresivas. Una defensa reactiva o descoordinada puede terminar en liquidaciones injustas, sanciones desproporcionadas e incluso riesgo penal. Actuamos desde el primer requerimiento con una estrategia preventiva y, si el litigio es inevitable, con rigor técnico. Conocemos el procedimiento interno de la autoridad y la vía contencioso-administrativa. Cada escrito y cada prueba se alinean a un escenario de cierre.",
     featuredSpecialties: [
@@ -131,6 +135,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 4,
     slug: "cambiario-aduanero-comercio-exterior",
     title: "Cambiario, Aduanero y Comercio Exterior",
+    image: "/practice-areas/trade.jpg",
     whyItMatters:
       "El movimiento de capitales, bienes y servicios está sujeto a reglas que cambian y se fiscalizan con rigor. Un error de canalización, clasificación o registro puede detener la operación o generar sanciones cambiarias y aduaneras. Alineamos inversión internacional, divisas e importaciones con la viabilidad del negocio. Intervenimos tanto en el diseño preventivo como en la defensa ante DIAN. El comercio exterior deja de ser un riesgo opaco y pasa a ser un proceso gobernable.",
     featuredSpecialties: [
@@ -158,6 +163,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 5,
     slug: "contratacion-estatal-infraestructura",
     title: "Contratación Estatal e Infraestructura",
+    image: "/practice-areas/infrastructure.jpg",
     whyItMatters:
       "Un pliego mal leído o una propuesta incompleta puede dejar fuera un proyecto viable. Durante la ejecución, modificaciones, multas y caducidad concentran el riesgo económico. Acompañamos a proponentes, contratistas y entidades en todo el ciclo: selección, contrato y controversia. Combinamos el derecho administrativo con la realidad de obra, concesión e interventoría. La meta es ganar el proceso y sostener el contrato hasta su liquidación.",
     featuredSpecialties: [
@@ -187,6 +193,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 6,
     slug: "litigios-arbitraje-conciliacion",
     title: "Litigios, Arbitraje y Conciliación",
+    image: "/practice-areas/litigation-arbitration.jpg",
     whyItMatters:
       "Un conflicto mal leído desgasta caja, reputación y relaciones comerciales. Litigar por inercia o transigir tarde suele costar más que una estrategia temprana. Evaluamos exposición jurídica, financiera y reputacional antes de elegir la vía. Diseñamos prevención, negociación, conciliación, arbitraje o litigio según el escenario. Cada medida cautelar y cada prueba sirve a un objetivo de cierre, no a un expediente interminable.",
     featuredSpecialties: [
@@ -216,6 +223,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 7,
     slug: "laboral-ugpp-compliance",
     title: "Laboral, UGPP y Compliance",
+    image: "/practice-areas/labor.jpg",
     whyItMatters:
       "La operación diaria concentra riesgos laborales, parafiscales y de cumplimiento que no aparecen en el contrato social. Una fiscalización de la UGPP o un programa SAGRILAFT incompleto puede detener decisiones de la gerencia. Ordenamos contratación, disciplina y políticas internas con criterios aplicables. Defendemos ante autoridades y diseñamos matrices de riesgo, PTEE y protección de datos. El cumplimiento deja de ser un anexo y pasa a proteger a administradores y al negocio.",
     featuredSpecialties: [
@@ -244,6 +252,7 @@ export const practiceAreas: PracticeArea[] = [
     id: 8,
     slug: "consultoria-auditoria-contable-financiera",
     title: "Consultoría y Auditoría Contable-Financiera",
+    image: "/practice-areas/finance.jpg",
     whyItMatters:
       "Las decisiones de inversión, crédito o M&A fallan cuando la información financiera no es oportuna ni confiable. Cierres débiles, NIIF mal aplicadas o tableros incompletos ocultan la exposición real. Diagnosticamos contabilidad, control interno y flujo de caja con mirada de negocio. Alineamos auditoría, políticas y reportes a socios con la estrategia de la compañía. La cifra deja de ser un trámite y se vuelve insumo para decidir.",
     featuredSpecialties: [

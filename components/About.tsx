@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 
 export default function About() {
@@ -16,20 +17,21 @@ export default function About() {
               className="relative"
             >
               <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-ivory">
-                <div className="flex h-full w-full items-center justify-center text-text-muted">
-                  <div className="text-center">
-                    <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-navy/5" />
-                    <p className="text-sm">[Fotografía de la firma]</p>
-                  </div>
-                </div>
+                <Image
+                  src="/firm.jpg"
+                  alt="Equipo profesional reunido en una oficina"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
               </div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border-2 border-gold/20 lg:-bottom-8 lg:-right-8"
+                className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border-2 border-gold/35 lg:-bottom-8 lg:-right-8"
               />
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="absolute -top-6 -left-6 h-32 w-32 rounded-2xl border-2 border-navy/10 lg:-top-8 lg:-left-8"
+                className="absolute -top-6 -left-6 h-32 w-32 rounded-2xl border-2 border-gold/50 lg:-top-8 lg:-left-8"
               />
             </motion.div>
           </FadeIn>

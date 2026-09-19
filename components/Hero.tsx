@@ -1,14 +1,31 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import ScrollIndicator from "./ScrollIndicator";
 
+const heroImages = [
+  "/hero/law-office-1.jpg",
+  "/hero/law-office-2.jpg",
+  "/hero/law-office-3.jpg",
+];
+
 export default function Hero() {
+  const [activeImage, setActiveImage] = useState(0);
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
   const contentY = useTransform(scrollY, [0, 500], [0, -50]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveImage((current) => (current + 1) % heroImages.length);
+    }, 4000);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -19,7 +36,25 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-mid to-charcoal" />
+        {heroImages.map((image, index) => (
+          <motion.div
+            key={image}
+            animate={{ opacity: activeImage === index ? 1 : 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={image}
+              alt=""
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
+        ))}
+        <div className="absolute inset-0 bg-navy/55" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy-mid/70 to-charcoal/80" />
         <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/80" />
       </motion.div>
@@ -28,7 +63,7 @@ export default function Hero() {
         className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         style={{ y: contentY, opacity }}
       >
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,7 +79,7 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]"
           >
-            Entendemos el derecho desde la lógica del negocio.
+            Asesoría legal, tributaria y financiera con visión integral
           </motion.h1>
 
           <motion.p

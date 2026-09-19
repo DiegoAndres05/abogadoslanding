@@ -25,7 +25,7 @@ export default function FinalCTA() {
               Asesoría legal, tributaria y financiera con visión integral.
             </p>
             <div className="mt-8 h-px w-16 bg-gold" />
-            <div className="mt-8 text-sm text-white/50">
+            <div className="mt-8 hidden text-sm text-white/50 lg:block">
               <p className="font-medium text-white/70">GET Legal &amp; Tax</p>
               <p className="mt-1">Bogotá · Cartagena · Colombia</p>
             </div>
@@ -33,8 +33,15 @@ export default function FinalCTA() {
         </FadeIn>
 
         <FadeIn delay={0.1} direction="right">
-          <div className="w-full max-w-[680px] lg:justify-self-end">
+          <div className="w-full max-w-[680px] lg:row-span-2 lg:justify-self-end">
             <ConsultationForm />
+          </div>
+        </FadeIn>
+
+        <FadeIn direction="left">
+          <div className="text-sm text-white/50 lg:hidden">
+            <p className="font-medium text-white/70">GET Legal &amp; Tax</p>
+            <p className="mt-1">Bogotá · Cartagena · Colombia</p>
           </div>
         </FadeIn>
       </div>

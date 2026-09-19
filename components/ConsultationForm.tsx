@@ -38,6 +38,9 @@ function validate(form: ConsultationRequest): FormErrors {
     errors.email = "Introduzca un correo electrónico válido.";
   }
   if (!form.phone.trim()) errors.phone = "Este campo es obligatorio.";
+  else if (!/^\+?\d{7,15}$/.test(form.phone)) {
+    errors.phone = "Introduzca un número de teléfono válido.";
+  }
   if (!form.interestArea) errors.interestArea = "Seleccione un área de interés.";
   return errors;
 }
@@ -118,7 +121,25 @@ export default function ConsultationForm() {
           <input id="consultation-email" type="email" value={form.email} onChange={(e) => updateField("email", e.target.value)} placeholder="nombre@empresa.com" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "consultation-email-error" : undefined} className={inputClass(Boolean(errors.email))} />
         </Field>
         <Field label="Teléfono *" htmlFor="consultation-phone" error={errors.phone}>
-          <input id="consultation-phone" type="tel" value={form.phone} onChange={(e) => updateField("phone", e.target.value)} placeholder="+57 300 000 0000" aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "consultation-phone-error" : undefined} className={inputClass(Boolean(errors.phone))} />
+          <input
+            id="consultation-phone"
+            type="tel"
+            inputMode="tel"
+            value={form.phone}
+            onChange={(e) =>
+              updateField(
+                "phone",
+                e.target.value
+                  .replace(/[^\d+]/g, "")
+                  .replace(/(?!^)\+/g, ""),
+              )
+            }
+            placeholder="+573000000000"
+            maxLength={16}
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "consultation-phone-error" : undefined}
+            className={inputClass(Boolean(errors.phone))}
+          />
         </Field>
         <div className="sm:col-span-2">
           <Field label="¿En qué podemos ayudarle? *" htmlFor="consultation-interest-area" error={errors.interestArea}>

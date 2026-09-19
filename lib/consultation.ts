@@ -10,6 +10,21 @@ export type ConsultationRequest = {
 export async function submitConsultationRequest(
   request: ConsultationRequest,
 ): Promise<void> {
-  void request;
-  throw new Error("No hay un destino de envío configurado para este formulario.");
+  const message = [
+    "Nueva solicitud de consulta - GET Legal & Tax",
+    "",
+    `Nombre: ${request.fullName}`,
+    `Empresa / Organización: ${request.organization || "No indicada"}`,
+    `Correo: ${request.email}`,
+    `Teléfono: ${request.phone}`,
+    `Área de interés: ${request.interestArea}`,
+    `Descripción: ${request.description || "No indicada"}`,
+  ].join("\n");
+
+  const whatsappUrl = `https://wa.me/573122751857?text=${encodeURIComponent(message)}`;
+  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+  if (!whatsappWindow) {
+    throw new Error("No se pudo abrir WhatsApp. Verifique el bloqueo de ventanas emergentes.");
+  }
 }
