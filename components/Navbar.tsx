@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -75,17 +76,22 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
-        <div className="flex h-16 items-center justify-between lg:h-20">
+        <div className="flex h-20 items-center justify-between lg:h-24">
           <motion.a
             href="#inicio"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className={`font-serif text-xl font-semibold tracking-tight lg:text-2xl transition-colors duration-300 ${
-              scrolled ? "text-navy" : "text-white"
-            }`}
+            className="flex items-center"
           >
-            GET Legal & Tax
+            <Image
+              src="/logogetlegacy.png"
+              alt="GET Legal & Tax Logo"
+              width={400}
+              height={120}
+              className="h-16 w-auto lg:h-20 object-contain"
+              priority
+            />
           </motion.a>
 
           <div className="hidden items-center gap-8 lg:flex">

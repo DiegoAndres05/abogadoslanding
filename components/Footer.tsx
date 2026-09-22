@@ -3,6 +3,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { practiceAreas } from "@/data/practiceAreas";
 import FadeIn from "./FadeIn";
+import Image from "next/image";
 
 const footerNav = [
   { label: "Inicio", href: "#inicio" },
@@ -27,9 +28,15 @@ export default function Footer() {
             <div className="sm:col-span-2 lg:col-span-1">
               <a
                 href="#inicio"
-                className="font-serif text-xl font-semibold text-white"
+                className="inline-block"
               >
-                GET Legal & Tax
+                <Image
+                  src="/logogetlegacy.png"
+                  alt="GET Legal & Tax Logo"
+                  width={400}
+                  height={120}
+                  className="h-20 w-auto lg:h-24 object-contain"
+                />
               </a>
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
                 Estrategia legal para decisiones que transforman.
