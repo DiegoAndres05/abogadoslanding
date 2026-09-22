@@ -36,19 +36,20 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ y: backgroundY }}
       >
-        {[heroImages[activeImage]].map((image) => (
+        {heroImages.map((image, index) => (
           <motion.div
             key={image}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0"
+            animate={{ opacity: activeImage === index ? 1 : 0 }}
+            transition={{ duration: 1.6, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute inset-0 will-change-[opacity]"
           >
             <Image
               src={image}
               alt=""
               fill
-              priority={activeImage === 0}
+              priority={index === 0}
+              loading="eager"
               sizes="100vw"
               className="object-cover"
             />

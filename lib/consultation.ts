@@ -21,7 +21,7 @@ export async function submitConsultationRequest(
     `Descripción: ${request.description || "No indicada"}`,
   ].join("\n");
 
-  const whatsappUrl = `https://wa.me/573122751857?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/573015246127?text=${encodeURIComponent(message)}`;
   const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
   if (!whatsappWindow) {
