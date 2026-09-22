@@ -67,12 +67,16 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const mobileNavLight = scrolled || isOpen;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+          : isOpen
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none lg:border-b-0"
+            : "bg-transparent"
       }`}
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
@@ -130,8 +134,8 @@ export default function Navbar() {
 
           <button
             type="button"
-            className={`inline-flex items-center justify-center rounded-lg p-2 transition-colors duration-300 lg:hidden ${
-              scrolled
+            className={`mr-1 inline-flex items-center justify-center rounded-lg p-2 transition-colors duration-300 lg:hidden ${
+              mobileNavLight
                 ? "text-charcoal hover:bg-ivory"
                 : "text-white hover:bg-white/10"
             }`}

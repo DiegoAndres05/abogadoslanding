@@ -7,7 +7,7 @@ import FadeIn from "./FadeIn";
 
 export default function About() {
   return (
-    <section id="nosotros" className="bg-white py-20 sm:py-28">
+    <section id="nosotros" className="overflow-x-clip bg-white py-20 sm:py-28 lg:overflow-x-visible">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn direction="left">
