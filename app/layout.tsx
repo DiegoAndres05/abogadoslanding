@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
+import { siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -17,7 +18,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "GET Legal & Tax | Estrategia Legal para Decisiones que Transforman",
+  metadataBase: siteUrl,
+  title: {
+    default: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
+    template: `%s | ${siteName}`,
+  },
   description:
     "Soluciones jurídicas, tributarias y financieras integradas. Acompañamos a empresas, inversionistas, entidades y familias en decisiones complejas.",
   keywords: [
@@ -32,14 +37,45 @@ export const metadata: Metadata = {
     "contratación estatal",
     "comercio exterior",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "GET Legal & Tax | Estrategia Legal para Decisiones que Transforman",
+    title: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
     description:
       "Soluciones jurídicas, tributarias y financieras integradas. Acompañamos a empresas, inversionistas, entidades y familias en decisiones complejas.",
     type: "website",
     locale: "es_CO",
-    siteName: "GET Legal & Tax",
+    siteName,
+    url: "/",
+    images: [
+      {
+        url: "/firm.jpg",
+        width: 1200,
+        height: 1500,
+        alt: "Equipo profesional de GET Legal & Tax",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
+    description:
+      "Soluciones jurídicas, tributarias y financieras integradas para decisiones complejas.",
+    images: ["/firm.jpg"],
+  },
+  category: "legal services",
 };
 
 export default function RootLayout({

@@ -47,7 +47,7 @@ export default function PracticeAreas() {
                 >
                   <Image
                     src={area.image}
-                    alt=""
+                    alt={`Asesoría en ${area.title}`}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="absolute inset-0 h-full w-full object-cover"
