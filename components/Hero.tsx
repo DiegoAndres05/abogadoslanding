@@ -7,9 +7,9 @@ import { ArrowRight, Calendar } from "lucide-react";
 import ScrollIndicator from "./ScrollIndicator";
 
 const heroImages = [
-  "/hero/law-office-1.jpg",
-  "/hero/law-office-2.jpg",
-  "/hero/law-office-3.jpg",
+  "/hero/law-office-1.webp",
+  "/hero/law-office-2.webp",
+  "/hero/law-office-3.webp",
 ];
 
 export default function Hero() {
@@ -36,10 +36,11 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ y: backgroundY }}
       >
-        {heroImages.map((image, index) => (
+        {[heroImages[activeImage]].map((image) => (
           <motion.div
             key={image}
-            animate={{ opacity: activeImage === index ? 1 : 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
@@ -47,16 +48,16 @@ export default function Hero() {
               src={image}
               alt=""
               fill
-              priority={index === 0}
+              priority={activeImage === 0}
               sizes="100vw"
               className="object-cover"
             />
           </motion.div>
         ))}
-        <div className="absolute inset-0 bg-navy/55" />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy-mid/70 to-charcoal/80" />
+        <div className="absolute inset-0 bg-navy/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/65 via-navy-mid/50 to-charcoal/40" />
         <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/35" />
       </motion.div>
 
       <motion.div
@@ -65,27 +66,27 @@ export default function Hero() {
       >
         <div className="max-w-4xl">
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold sm:text-sm"
           >
             Estrategia Legal · Visión de Negocio
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]"
           >
             Asesoría legal, tributaria y financiera con visión integral
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl"
           >
             Soluciones jurídicas, tributarias y financieras integradas.
@@ -95,9 +96,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
             <motion.a
