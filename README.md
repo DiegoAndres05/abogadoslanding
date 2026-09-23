@@ -39,4 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 The site exposes canonical metadata, Open Graph/Twitter cards, JSON-LD, and
 the `/robots.txt` and `/sitemap.xml` routes. Set `NEXT_PUBLIC_SITE_URL` in the
 deployment environment when the public domain differs from the default
-`https://getlegalcol.com`.
+`https://getlegalandtax.com`.
