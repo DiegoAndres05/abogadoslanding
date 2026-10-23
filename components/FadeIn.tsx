@@ -51,7 +51,7 @@ export default function FadeIn({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-50px" }}
+      viewport={{ once, margin: "-50px", amount: 0.15 }}
       variants={variants}
       transition={{
         duration,

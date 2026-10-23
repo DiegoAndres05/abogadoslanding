@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import ScrollIndicator from "./ScrollIndicator";
@@ -13,43 +13,64 @@ const heroImages = [
 ];
 
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
   const [activeImage, setActiveImage] = useState(0);
   const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
-  const contentY = useTransform(scrollY, [0, 500], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const backgroundY = useTransform(scrollY, [0, 500], reduceMotion ? [0, 0] : [0, 150]);
+  const contentY = useTransform(scrollY, [0, 500], reduceMotion ? [0, 0] : [0, -50]);
+  const opacity = useTransform(scrollY, [0, 300], reduceMotion ? [1, 1] : [1, 0]);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveImage((current) => (current + 1) % heroImages.length);
-    }, 4000);
+    if (reduceMotion) return;
 
-    return () => window.clearInterval(interval);
-  }, []);
+    let intervalId: number | undefined;
+
+    const start = () => {
+      intervalId = window.setInterval(() => {
+        setActiveImage((current) => (current + 1) % heroImages.length);
+      }, 4000);
+    };
+
+    const stop = () => {
+      if (intervalId !== undefined) window.clearInterval(intervalId);
+      intervalId = undefined;
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+
+    if (!document.hidden) start();
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [reduceMotion]);
 
   return (
     <section
       id="inicio"
       className="relative flex min-h-screen items-center overflow-hidden bg-navy"
     >
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: backgroundY }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         {heroImages.map((image, index) => (
           <motion.div
             key={image}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: activeImage === index ? 1 : 0 }}
-            transition={{ duration: 1.6, ease: [0.4, 0, 0.2, 1] }}
-            className="absolute inset-0 will-change-[opacity]"
+            initial={false}
+            animate={{
+              opacity: reduceMotion ? (index === 0 ? 1 : 0) : activeImage === index ? 1 : 0,
+            }}
+            transition={{ duration: reduceMotion ? 0 : 1.6, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute inset-0"
           >
             <Image
               src={image}
               alt=""
               fill
               priority={index === 0}
-              loading="eager"
               sizes="100vw"
               className="object-cover"
             />
@@ -66,46 +87,25 @@ export default function Hero() {
         style={{ y: contentY, opacity }}
       >
         <div className="max-w-4xl">
-          <motion.p
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold sm:text-sm"
-          >
-            Estrategia Legal · Visión de Negocio
-          </motion.p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold sm:text-sm">
+            Derecho para decisiones que transforman
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]"
-          >
-            Asesoría legal, tributaria y financiera con visión integral
-          </motion.h1>
+          <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+            Derecho corporativo, contratación pública y estrategia tributaria
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl"
-          >
-            Soluciones jurídicas, tributarias y financieras integradas.
-            Acompañamos a empresas, inversionistas, entidades y familias en
-            decisiones complejas que exigen rigor técnico, criterio estratégico
-            y capacidad de ejecución.
-          </motion.p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl">
+            Acompañamos a empresas, inversionistas y contratistas del Estado en
+            la estructuración de negocios, la ejecución de contratos y la
+            gestión de riesgos jurídicos y fiscales.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
-          >
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <motion.a
               href="#contacto"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.98 }}
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20"
             >
               <Calendar className="h-4 w-4" />
@@ -113,14 +113,14 @@ export default function Hero() {
             </motion.a>
             <motion.a
               href="#areas"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.98 }}
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 px-6 py-3.5 text-sm font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
             >
               Conocer nuestras áreas
               <ArrowRight className="h-4 w-4" />
             </motion.a>
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 

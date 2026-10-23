@@ -7,7 +7,13 @@ import WhyUs from "@/components/WhyUs";
 import Team from "@/components/Team";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import { siteName, siteUrl } from "@/lib/site";
+import {
+  corporateEmail,
+  phoneNumbers,
+  primaryServiceTypes,
+  siteName,
+  siteUrl,
+} from "@/lib/site";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -17,25 +23,22 @@ const structuredData = {
   url: siteUrl.origin,
   image: `${siteUrl.origin}/firm.jpg`,
   description:
-    "Soluciones jurídicas, tributarias y financieras integradas para empresas, inversionistas, entidades y familias en Colombia.",
-  email: "getlegalcol@gmail.com",
-  telephone: ["+57 318 338 3714", "+57 301 524 6127"],
+    "Acompañamos a empresas, inversionistas y contratistas del Estado en la estructuración de negocios, la ejecución de contratos y la gestión de riesgos jurídicos y fiscales.",
+  email: corporateEmail,
+  telephone: phoneNumbers,
   areaServed: {
     "@type": "Country",
     name: "Colombia",
   },
   serviceType: [
-    "Asesoría legal corporativa",
-    "Asesoría tributaria",
-    "Asesoría financiera",
-    "Litigios y arbitraje",
+    ...primaryServiceTypes,
   ],
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "customer service",
-      telephone: "+57 318 338 3714",
-      email: "getlegalcol@gmail.com",
+      telephone: phoneNumbers[0],
+      email: corporateEmail,
       availableLanguage: ["Spanish"],
     },
   ],

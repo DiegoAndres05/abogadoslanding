@@ -1,7 +1,17 @@
 "use client";
 
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import FadeIn from "./FadeIn";
 import ConsultationForm from "./ConsultationForm";
+import { parseConsultationArea } from "@/lib/consultation";
+import { corporateEmail, phoneNumbers, whatsappNumber } from "@/lib/site";
+
+function ContextualConsultationForm() {
+  const searchParams = useSearchParams();
+  const area = parseConsultationArea(searchParams.get("area"));
+  return <ConsultationForm key={area || "none"} initialArea={area} />;
+}
 
 export default function FinalCTA() {
   return (
@@ -22,10 +32,24 @@ export default function FinalCTA() {
               De su próximo movimiento estratégico.
             </h2>
             <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/70">
-              Asesoría legal, tributaria y financiera con visión integral.
+              Cuéntenos si necesita estructurar un negocio, ejecutar un contrato
+              estatal o gestionar un riesgo tributario.
             </p>
             <div className="mt-8 h-px w-16 bg-gold" />
-            <div className="mt-8 hidden text-sm text-white/50 lg:block">
+            <div className="mt-6 flex flex-col gap-3 text-sm text-white/70">
+              {phoneNumbers.map((phone) => (
+                <a key={phone} href={`tel:${phone.replace(/\s/g, "")}`} className="hover:text-white">
+                  {phone}
+                </a>
+              ))}
+              <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" className="hover:text-white">
+                WhatsApp: +57 301 524 6127
+              </a>
+              <a href={`mailto:${corporateEmail}`} className="hover:text-white">
+                {corporateEmail}
+              </a>
+            </div>
+            <div className="mt-8 text-sm text-white/50">
               <p className="font-medium text-white/70">GET Legal &amp; Tax</p>
               <p className="mt-1">Bogotá · Cartagena · Colombia</p>
             </div>
@@ -33,15 +57,10 @@ export default function FinalCTA() {
         </FadeIn>
 
         <FadeIn delay={0.1} direction="right">
-          <div className="w-full max-w-[680px] lg:row-span-2 lg:justify-self-end">
-            <ConsultationForm />
-          </div>
-        </FadeIn>
-
-        <FadeIn direction="left">
-          <div className="text-sm text-white/50 lg:hidden">
-            <p className="font-medium text-white/70">GET Legal &amp; Tax</p>
-            <p className="mt-1">Bogotá · Cartagena · Colombia</p>
+          <div className="w-full max-w-[680px] lg:justify-self-end">
+            <Suspense fallback={<div className="min-h-[24rem] rounded-2xl bg-white/90" />}>
+              <ContextualConsultationForm />
+            </Suspense>
           </div>
         </FadeIn>
       </div>

@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Áreas de práctica", href: "#areas" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Equipo", href: "#equipo" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 const menuVariants = {

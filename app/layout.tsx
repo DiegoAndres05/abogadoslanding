@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
-import { siteName, siteUrl } from "@/lib/site";
+import { primaryServiceTypes, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -20,11 +20,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
+    default:     `${siteName} | Derecho corporativo, contratación pública y estrategia tributaria`,
     template: `%s | ${siteName}`,
   },
   description:
-    "Soluciones jurídicas, tributarias y financieras integradas. Acompañamos a empresas, inversionistas, entidades y familias en decisiones complejas.",
+    "Acompañamos a empresas, inversionistas y contratistas del Estado en la estructuración de negocios, la ejecución de contratos y la gestión de riesgos jurídicos y fiscales.",
   keywords: [
     "abogados Colombia",
     "firma de abogados",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "M&A",
     "precios de transferencia",
     "contratación estatal",
-    "comercio exterior",
+    "contratación pública",
   ],
   alternates: {
     canonical: "/",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
+    title: `${siteName} | Derecho corporativo, contratación pública y estrategia tributaria`,
     description:
-      "Soluciones jurídicas, tributarias y financieras integradas. Acompañamos a empresas, inversionistas, entidades y familias en decisiones complejas.",
+      "Derecho corporativo, contratación pública y estrategia tributaria para empresas, inversionistas y contratistas del Estado.",
     type: "website",
     locale: "es_CO",
     siteName,
@@ -70,9 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} | Estrategia Legal para Decisiones que Transforman`,
-    description:
-      "Soluciones jurídicas, tributarias y financieras integradas para decisiones complejas.",
+    title: `${siteName} | Derecho corporativo, contratación pública y estrategia tributaria`,
+    description: primaryServiceTypes.join(", "),
     images: ["/firm.jpg"],
   },
   category: "legal services",

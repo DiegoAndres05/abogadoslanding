@@ -11,12 +11,8 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn direction="left">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="relative"
-            >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-ivory">
+            <div className="group relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ivory transition-transform duration-300 group-hover:scale-[1.02]">
                 <Image
                   src="/firm.jpg"
                   alt="Equipo profesional reunido en una oficina"
@@ -25,15 +21,9 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border-2 border-gold/35 lg:-bottom-8 lg:-right-8"
-              />
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -top-6 -left-6 h-32 w-32 rounded-2xl border-2 border-gold/50 lg:-top-8 lg:-left-8"
-              />
-            </motion.div>
+              <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border-2 border-gold/35 transition-transform duration-300 group-hover:scale-105 lg:-bottom-8 lg:-right-8" />
+              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-2xl border-2 border-gold/50 transition-transform duration-300 group-hover:scale-105 lg:-top-8 lg:-left-8" />
+            </div>
           </FadeIn>
 
           <FadeIn direction="right" delay={0.1}>
@@ -45,13 +35,13 @@ export default function About() {
                 Entendemos el derecho desde la lógica del negocio.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-text-muted">
-                Acompañamos a empresas, inversionistas, entidades y familias en
-                decisiones complejas que exigen rigor técnico, criterio estratégico
-                y capacidad de ejecución.
+                Somos una firma colombiana que acompaña a empresas, inversionistas
+                y contratistas del Estado cuando el negocio, el contrato o el
+                riesgo fiscal requieren criterio jurídico y capacidad de ejecución.
               </p>
               <p className="mt-4 text-base leading-relaxed text-text-muted">
-                Convertimos la complejidad jurídica, tributaria y financiera en
-                decisiones claras, estructuras sólidas y resultados sostenibles.
+                Trabajamos desde Bogotá y Cartagena con un equipo que combina
+                derecho societario, contratación pública y defensa tributaria.
               </p>
               <div className="mt-6 space-y-3">
                 <div className="flex items-center gap-3">

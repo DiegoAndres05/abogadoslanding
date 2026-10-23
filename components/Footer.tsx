@@ -1,8 +1,6 @@
-"use client";
-
-import { Mail, Phone, MapPin } from "lucide-react";
-import { practiceAreas } from "@/data/practiceAreas";
-import FadeIn from "./FadeIn";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { primaryPracticeAreas } from "@/data/practiceAreas";
+import { corporateEmail, legalRoutes, phoneNumbers, whatsappNumber } from "@/lib/site";
 import Image from "next/image";
 
 const footerNav = [
@@ -24,7 +22,6 @@ export default function Footer() {
     <footer className="bg-charcoal pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <FadeIn delay={0} direction="up">
             <div className="sm:col-span-2 lg:col-span-1">
               <a
                 href="#inicio"
@@ -54,9 +51,7 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-          </FadeIn>
 
-          <FadeIn delay={0.1} direction="up">
             <div>
               <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-white">
                 Navegación
@@ -74,18 +69,16 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-          </FadeIn>
 
-          <FadeIn delay={0.2} direction="up">
             <div>
               <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-white">
                 Áreas de práctica
               </h3>
               <ul className="mt-4 space-y-2.5">
-                {practiceAreas.slice(0, 6).map((area) => (
+                {primaryPracticeAreas.map((area) => (
                   <li key={area.id}>
                     <a
-                      href={`#${area.slug}`}
+                      href={`/practicas/${area.slug}`}
                       className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {area.title}
@@ -94,9 +87,7 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-          </FadeIn>
 
-          <FadeIn delay={0.3} direction="up">
             <div>
               <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-white">
                 Contacto
@@ -105,25 +96,33 @@ export default function Footer() {
                 <li className="flex items-start gap-3">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                   <div className="text-sm text-white/50">
-                    <p>Manuel: +57 318 338 3714</p>
-                    <p>Kevin: +57 301 524 6127</p>
+                    {phoneNumbers.map((phone) => <p key={phone}>{phone}</p>)}
                   </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                  <a
+                    href={`https://wa.me/${whatsappNumber}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-white/50 transition-colors hover:text-white"
+                  >
+                    WhatsApp +57 301 524 6127
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                   <a
-                    href="mailto:getlegalcol@gmail.com"
+                    href={`mailto:${corporateEmail}`}
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
-                    getlegalcol@gmail.com
+                    {corporateEmail}
                   </a>
                 </li>
               </ul>
             </div>
-          </FadeIn>
         </div>
 
-        <FadeIn delay={0.4} direction="up">
           <div className="mt-12 border-t border-white/10 pt-8">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
               <p className="text-xs text-white/30">
@@ -131,13 +130,13 @@ export default function Footer() {
               </p>
               <div className="flex gap-6">
                 <a
-                  href="#"
+                  href={legalRoutes.privacy}
                   className="text-xs text-white/30 transition-colors hover:text-white/50"
                 >
                   Política de privacidad
                 </a>
                 <a
-                  href="#"
+                  href={legalRoutes.terms}
                   className="text-xs text-white/30 transition-colors hover:text-white/50"
                 >
                   Términos y condiciones
@@ -145,7 +144,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-        </FadeIn>
       </div>
     </footer>
   );

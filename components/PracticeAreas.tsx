@@ -1,102 +1,69 @@
-import { ArrowUpRight, Check } from "lucide-react";
-import Image from "next/image";
-import { practiceAreas } from "@/data/practiceAreas";
-import { practiceAreaVisualClasses } from "@/components/practiceAreaVisuals";
+import { ArrowRight } from "lucide-react";
+import {
+  complementaryPracticeAreas,
+  primaryPracticeAreas,
+} from "@/data/practiceAreas";
 import FadeIn from "./FadeIn";
-import PracticeAreaRowMotion from "./PracticeAreaRowMotion";
+import PracticePillarCard from "./PracticePillarCard";
 
 export default function PracticeAreas() {
   return (
-    <section
-      id="areas"
-      className="relative overflow-hidden bg-navy py-20 sm:py-28"
-    >
+    <section id="areas" className="relative overflow-hidden bg-navy py-20 sm:py-28">
       <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-mid to-charcoal" />
-      <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <FadeIn>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Áreas de práctica
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
-              Soluciones legales para decisiones importantes
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="mt-4 text-lg text-white/70">
-              Soluciones jurídicas, tributarias y financieras integradas para
-              empresas, inversionistas, entidades y familias.
-            </p>
-          </FadeIn>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            Tres prácticas centrales
+          </p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
+            Claridad jurídica para decisiones importantes
+          </h2>
+          <p className="mt-4 text-lg text-white/70">
+            Identifique rápidamente el equipo que puede acompañar su negocio,
+            contrato o estrategia fiscal.
+          </p>
         </div>
 
-        <div className="mt-14 flex flex-col gap-8 lg:gap-10">
-          {practiceAreas.map((area) => (
-            <PracticeAreaRowMotion key={area.id}>
-              <article
-                id={area.slug}
-                className="scroll-mt-24 grid grid-cols-1 items-start gap-5 md:grid-cols-2 md:gap-6"
-              >
-                <div
-                  data-reveal="panel"
-                  className={`relative isolate aspect-[5/4] min-h-[16rem] overflow-hidden rounded-3xl sm:min-h-[18rem] ${practiceAreaVisualClasses[area.visualVariant]}`}
-                >
-                  <Image
-                    src={area.image}
-                    alt={`Asesoría en ${area.title}`}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/35 to-transparent" />
-                  <div className="relative z-10 flex h-full flex-col justify-end gap-4 p-6 sm:p-8">
-                    <h3 className="font-serif text-2xl font-semibold leading-snug text-white sm:text-3xl">
-                      {area.title}
-                    </h3>
-                    <a
-                      href="#contacto"
-                      className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-ivory"
-                    >
-                      Agenda una consulta
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-navy text-white">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
-                    </a>
-                  </div>
-                </div>
-
-                <div data-reveal="card" className="rounded-3xl bg-white p-6 sm:p-8">
-                  <h4 className="font-serif text-xl font-semibold text-navy">
-                    ¿Por qué importa?
-                  </h4>
-                  <p className="mt-3 text-sm leading-relaxed text-navy/80 sm:text-base">
-                    {area.whyItMatters}
-                  </p>
-                  <h4 className="mt-6 font-serif text-xl font-semibold text-navy">
-                    Especialidades:
-                  </h4>
-                  <ul className="mt-3 space-y-2">
-                    {area.featuredSpecialties.slice(0, 5).map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2 text-sm leading-relaxed text-navy/80"
-                      >
-                        <Check
-                          className="mt-0.5 h-4 w-4 shrink-0 text-gold"
-                          aria-hidden
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            </PracticeAreaRowMotion>
+        <div className="mt-14 space-y-8">
+          {primaryPracticeAreas.map((area, index) => (
+            <FadeIn key={area.id} delay={index * 0.08}>
+              <PracticePillarCard area={area} />
+            </FadeIn>
           ))}
+        </div>
+
+        <div className="mt-20">
+          <div className="flex flex-col justify-between gap-3 border-b border-white/15 pb-5 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                Servicios complementarios
+              </p>
+              <h3 className="mt-2 font-serif text-2xl font-semibold text-white">
+                Apoyo especializado cuando su operación lo requiere
+              </h3>
+            </div>
+          </div>
+          <FadeIn>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {complementaryPracticeAreas.map((area) => (
+              <article key={area.id} className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-transform duration-300 hover:-translate-y-1">
+                <area.icon className="h-6 w-6 text-gold" aria-hidden />
+                <h4 className="mt-4 font-serif text-xl font-semibold text-white">
+                  {area.title}
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  {area.shortDescription}
+                </p>
+                <a
+                  href={`/?area=${area.id}#contacto`}
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-light"
+                >
+                  Consultar <ArrowRight className="h-4 w-4" />
+                </a>
+              </article>
+            ))}
+          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

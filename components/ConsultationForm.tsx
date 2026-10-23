@@ -1,23 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Check, Mail, Phone } from "lucide-react";
+import { Check, Mail, Phone, MessageCircle } from "lucide-react";
 import {
+  consultationAreas,
+  type ConsultationArea,
   ConsultationRequest,
   submitConsultationRequest,
 } from "@/lib/consultation";
-
-const interestAreas = [
-  "Corporativo, M&A e inversión",
-  "Tributario y precios de transferencia",
-  "DIAN, litigios y controversias tributarias",
-  "Cambiario, aduanero y comercio exterior",
-  "Contratación estatal e infraestructura",
-  "Litigios, arbitraje y conciliación",
-  "Laboral, UGPP y compliance",
-  "Consultoría y auditoría contable-financiera",
-  "Otro",
-];
+import { corporateEmail, phoneNumbers, whatsappNumber } from "@/lib/site";
 
 type FormErrors = Partial<Record<keyof ConsultationRequest, string>>;
 
@@ -45,8 +36,15 @@ function validate(form: ConsultationRequest): FormErrors {
   return errors;
 }
 
-export default function ConsultationForm() {
-  const [form, setForm] = useState(initialForm);
+export default function ConsultationForm({
+  initialArea = "",
+}: {
+  initialArea?: ConsultationArea | "";
+}) {
+  const [form, setForm] = useState({
+    ...initialForm,
+    interestArea: initialArea,
+  });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"form" | "loading" | "success">("form");
   const [submitError, setSubmitError] = useState("");
@@ -90,11 +88,16 @@ export default function ConsultationForm() {
           solicitud y se pondrá en contacto con usted.
         </p>
         <div className="mt-7 space-y-3 border-t border-border pt-5 text-sm text-navy">
-          <a className="flex items-center gap-3 hover:text-gold" href="tel:+573183383714">
-            <Phone className="h-4 w-4 text-gold" />+57 318 338 3714
+          {phoneNumbers.map((phone) => (
+            <a key={phone} className="flex items-center gap-3 hover:text-gold" href={`tel:${phone.replace(/\s/g, "")}`}>
+              <Phone className="h-4 w-4 text-gold" />{phone}
+            </a>
+          ))}
+          <a className="flex items-center gap-3 hover:text-gold" href={`mailto:${corporateEmail}`}>
+            <Mail className="h-4 w-4 text-gold" />{corporateEmail}
           </a>
-          <a className="flex items-center gap-3 hover:text-gold" href="mailto:getlegalcol@gmail.com">
-            <Mail className="h-4 w-4 text-gold" />getlegalcol@gmail.com
+          <a className="flex items-center gap-3 hover:text-gold" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">
+            <MessageCircle className="h-4 w-4 text-gold" />Escribir por WhatsApp
           </a>
         </div>
       </div>
@@ -145,7 +148,20 @@ export default function ConsultationForm() {
           <Field label="¿En qué podemos ayudarle? *" htmlFor="consultation-interest-area" error={errors.interestArea}>
             <select id="consultation-interest-area" value={form.interestArea} onChange={(e) => updateField("interestArea", e.target.value)} aria-invalid={Boolean(errors.interestArea)} aria-describedby={errors.interestArea ? "consultation-interest-area-error" : undefined} className={inputClass(Boolean(errors.interestArea))}>
               <option value="">Seleccione un área</option>
-              {interestAreas.map((area) => <option key={area} value={area}>{area}</option>)}
+              <optgroup label="Prácticas principales">
+                {consultationAreas.filter((area) => area.group === "primary").map((area) => (
+                  <option key={area.value} value={area.value}>
+                    {area.label}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Servicios complementarios">
+                {consultationAreas.filter((area) => area.group !== "primary").map((area) => (
+                  <option key={area.value} value={area.value}>
+                    {area.label}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </Field>
         </div>
