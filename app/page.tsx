@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import TrustSection from "@/components/TrustSection";
 import PracticeAreas from "@/components/PracticeAreas";
 import About from "@/components/About";
 import WhyUs from "@/components/WhyUs";
@@ -54,7 +53,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <TrustSection />
         <PracticeAreas />
         <About />
         <WhyUs />

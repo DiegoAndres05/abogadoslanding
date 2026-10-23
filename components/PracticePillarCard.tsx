@@ -11,10 +11,12 @@ const pillarNumber: Record<string, string> = {
 };
 
 export default function PracticePillarCard({ area }: { area: PracticeArea }) {
+  const highlights = area.featuredServices ?? [];
+
   return (
     <article className="grid overflow-hidden rounded-3xl bg-white md:grid-cols-[0.9fr_1.1fr]">
       <div
-        className={`relative min-h-[19rem] ${practiceAreaVisualClasses[area.visualVariant]}`}
+        className={`relative h-full min-h-[19rem] ${practiceAreaVisualClasses[area.visualVariant]}`}
       >
         <Image
           src={area.image}
@@ -35,24 +37,31 @@ export default function PracticePillarCard({ area }: { area: PracticeArea }) {
       </div>
       <div className="p-6 sm:p-8">
         <p className="text-base leading-relaxed text-navy/80">{area.shortDescription}</p>
-        <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-          {area.services.map((service) => (
-            <li key={service} className="flex items-start gap-2 text-sm leading-relaxed text-navy/75">
-              <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
-              {service}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-7 flex flex-wrap gap-3">
+        {highlights.length > 0 && (
+          <>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+              Servicios destacados
+            </p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {highlights.map((service) => (
+                <li key={service} className="flex items-start gap-2 text-sm leading-relaxed text-navy/75">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link
             href={`/practicas/${area.slug}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-navy px-4 py-3 text-sm font-semibold text-white hover:bg-navy-mid"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-navy px-4 py-3 text-sm font-semibold text-white hover:bg-navy-mid sm:justify-start"
           >
             Conocer más <ArrowRight className="h-4 w-4" />
           </Link>
           <a
             href={`/?area=${area.id}#contacto`}
-            className="inline-flex items-center rounded-lg border border-navy/20 px-4 py-3 text-sm font-semibold text-navy hover:bg-ivory"
+            className="inline-flex items-center justify-center rounded-lg border border-navy/20 px-4 py-3 text-sm font-semibold text-navy hover:bg-ivory sm:justify-start"
           >
             Consultar esta práctica
           </a>

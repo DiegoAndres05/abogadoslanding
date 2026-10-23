@@ -40,6 +40,7 @@ export interface PracticeArea {
   image: string;
   whyItMatters: string;
   featuredSpecialties: string[];
+  featuredServices?: string[];
   visualVariant: VisualVariant;
   icon: ComponentType<{ className?: string }>;
   services: string[];
@@ -65,6 +66,12 @@ export const primaryPracticeAreas: PracticeArea[] = [
       "Acuerdos de accionistas",
       "Gobierno corporativo",
       "Fusiones, adquisiciones y conflictos societarios",
+    ],
+    featuredServices: [
+      "Constitución de sociedades",
+      "Acuerdos de accionistas",
+      "Fusiones y adquisiciones",
+      "Conflictos societarios",
     ],
     visualVariant: "navy-gold-diag",
     icon: Building2,
@@ -98,6 +105,12 @@ export const primaryPracticeAreas: PracticeArea[] = [
       "Ejecución, pagos y modificaciones",
       "Sanciones y liquidación",
       "Controversias contractuales",
+    ],
+    featuredServices: [
+      "Revisión de pliegos y propuestas",
+      "Consorcios y uniones temporales",
+      "Ejecución, pagos y modificaciones",
+      "Liquidación y controversias",
     ],
     visualVariant: "navy-grid",
     icon: Landmark,
@@ -135,6 +148,12 @@ export const primaryPracticeAreas: PracticeArea[] = [
       "Fiscalizaciones y requerimientos",
       "Recursos y litigios",
       "Cobro coactivo",
+    ],
+    featuredServices: [
+      "Planeación tributaria",
+      "Precios de transferencia",
+      "Fiscalizaciones y recursos ante DIAN",
+      "Litigios y cobro coactivo",
     ],
     visualVariant: "gold-mesh",
     icon: Calculator,

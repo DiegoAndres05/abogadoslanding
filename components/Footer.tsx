@@ -1,14 +1,15 @@
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { primaryPracticeAreas } from "@/data/practiceAreas";
 import { corporateEmail, legalRoutes, phoneNumbers, whatsappNumber } from "@/lib/site";
-import Image from "next/image";
 
 const footerNav = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Áreas de práctica", href: "#areas" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Áreas de práctica", href: "/#areas" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Equipo", href: "/#equipo" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const locations = [
@@ -23,8 +24,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2 lg:col-span-1">
-              <a
-                href="#inicio"
+              <Link
+                href="/#inicio"
                 className="inline-block"
               >
                 <Image
@@ -34,7 +35,7 @@ export default function Footer() {
                   height={120}
                   className="h-20 w-auto lg:h-24 object-contain"
                 />
-              </a>
+              </Link>
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
                 Estrategia legal para decisiones que transforman.
                 Soluciones jurídicas, tributarias y financieras integradas.
@@ -59,12 +60,12 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {footerNav.map((link) => (
                   <li key={link.href}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -77,12 +78,12 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {primaryPracticeAreas.map((area) => (
                   <li key={area.id}>
-                    <a
+                    <Link
                       href={`/practicas/${area.slug}`}
                       className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {area.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

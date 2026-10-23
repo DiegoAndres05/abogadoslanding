@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 export default function ScrollIndicator() {
   return (
     <a
-      href="#trust"
+      href="#areas"
       className="absolute bottom-8 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center gap-2 text-white/50 transition-colors hover:text-white/80"
       aria-label="Scroll down"
     >
