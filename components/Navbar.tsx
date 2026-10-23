@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Áreas de práctica", href: "#areas" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Áreas de práctica", href: "/#areas" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Equipo", href: "/#equipo" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const menuVariants = {
@@ -83,7 +83,7 @@ export default function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
         <div className="flex h-20 items-center justify-between lg:h-24">
           <motion.a
-            href="#inicio"
+            href="/#inicio"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -117,7 +117,7 @@ export default function Navbar() {
               </motion.a>
             ))}
             <motion.a
-              href="#contacto"
+              href="/#contacto"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.5 }}
@@ -193,7 +193,7 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <motion.a
-                href="#contacto"
+                href="/#contacto"
                 onClick={handleLinkClick}
                 variants={itemVariants}
                 className="mt-2 block rounded-lg bg-navy px-3 py-2.5 text-center text-base font-medium text-white transition-colors hover:bg-navy-mid"

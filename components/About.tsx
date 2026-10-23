@@ -35,28 +35,10 @@ export default function About() {
                 Entendemos el derecho desde la lógica del negocio.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-text-muted">
-                Somos una firma colombiana que acompaña a empresas, inversionistas
-                y contratistas del Estado cuando el negocio, el contrato o el
-                riesgo fiscal requieren criterio jurídico y capacidad de ejecución.
+                Somos una firma colombiana con sede en Bogotá y Cartagena,
+                concentrada en derecho societario, contratación pública y
+                defensa tributaria.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-text-muted">
-                Trabajamos desde Bogotá y Cartagena con un equipo que combina
-                derecho societario, contratación pública y defensa tributaria.
-              </p>
-              <div className="mt-6 space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
-                  <p className="text-sm font-medium text-charcoal">Rigor — Análisis técnico y defensa consistente.</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
-                  <p className="text-sm font-medium text-charcoal">Visión — Soluciones conectadas con el negocio.</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
-                  <p className="text-sm font-medium text-charcoal">Cercanía — Atención directa y respuestas oportunas.</p>
-                </div>
-              </div>
               <motion.a
                 href="#contacto"
                 whileHover={{ scale: 1.05 }}

@@ -1,27 +1,33 @@
 "use client";
 
-import { Target, Eye, Handshake } from "lucide-react";
+import { Building2, Calculator, Landmark } from "lucide-react";
 import FadeIn from "./FadeIn";
 
-const pillars = [
+const differentiators = [
   {
-    icon: Target,
-    title: "Rigor",
-    description: "Análisis técnico y defensa consistente.",
+    icon: Building2,
+    kicker: "Derecho corporativo",
+    title: "Control entre socios",
+    description:
+      "Quién decide y cómo se sale queda escrito antes del conflicto.",
     visualClass:
       "bg-[linear-gradient(100deg,#0F2330_0_48%,#1E3A4D_48%_72%,#b89a5c_72%_100%)]",
   },
   {
-    icon: Eye,
-    title: "Visión",
-    description: "Soluciones conectadas con el negocio.",
+    icon: Landmark,
+    kicker: "Contratación pública",
+    title: "Después de adjudicar",
+    description:
+      "La ejecución y el cierre se revisan desde la lectura del pliego.",
     visualClass:
       "bg-[linear-gradient(120deg,#0F2330_0_42%,#1E3A4D_42%_70%,#a88b55_70%_100%)]",
   },
   {
-    icon: Handshake,
-    title: "Cercanía",
-    description: "Atención directa y respuestas oportunas.",
+    icon: Calculator,
+    kicker: "Derecho tributario",
+    title: "Ante la DIAN",
+    description:
+      "La defensa se prepara con la operación, no al llegar el requerimiento.",
     visualClass:
       "bg-[linear-gradient(80deg,#b08f52_0_24%,#1E3A4D_24%_54%,#0F2330_54%_100%)]",
   },
@@ -29,7 +35,7 @@ const pillars = [
 
 export default function WhyUs() {
   return (
-    <section className="relative overflow-hidden bg-navy py-20 sm:py-28">
+    <section id="por-que" className="relative overflow-hidden bg-navy py-20 sm:py-28">
       <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-mid to-charcoal" />
       <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
 
@@ -40,30 +46,32 @@ export default function WhyUs() {
               ¿Por qué elegirnos?
             </p>
             <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
-              Más que representación legal.
+              Así enfocamos cada práctica.
             </h2>
             <p className="mt-4 text-lg text-white/70">
-              Tres formas de trabajar que sostienen cada asunto: análisis
-              preciso, lectura de negocio y atención directa.
+              El criterio cambia según el asunto.
             </p>
           </div>
         </FadeIn>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {pillars.map((pillar, index) => (
-            <FadeIn key={pillar.title} delay={index * 0.12}>
+          {differentiators.map((item, index) => (
+            <FadeIn key={item.title} delay={index * 0.12}>
               <div
-                className={`group relative isolate overflow-hidden rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-gold/10 ${pillar.visualClass}`}
+                className={`group relative isolate h-full overflow-hidden rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-gold/10 ${item.visualClass}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/35 to-transparent" />
                 <div className="relative z-10 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <pillar.icon className="h-7 w-7 text-white" />
+                  <item.icon className="h-7 w-7 text-white" aria-hidden />
                 </div>
-                <h3 className="relative z-10 font-serif text-2xl font-semibold text-white">
-                  {pillar.title}
+                <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                  {item.kicker}
+                </p>
+                <h3 className="relative z-10 mt-3 font-serif text-2xl font-semibold text-white">
+                  {item.title}
                 </h3>
                 <p className="relative z-10 mt-3 text-base leading-relaxed text-white/70">
-                  {pillar.description}
+                  {item.description}
                 </p>
               </div>
             </FadeIn>

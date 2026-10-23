@@ -1,23 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import type { PracticeArea } from "@/data/practiceAreas";
 import { primaryPracticeAreas } from "@/data/practiceAreas";
 import { practiceAreaVisualClasses } from "@/components/practiceAreaVisuals";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function PracticePillarPage({ area }: { area: PracticeArea }) {
   return (
     <>
-      <header className="bg-navy">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white">
-            <ArrowLeft className="h-4 w-4" /> Volver a GET Legal &amp; Tax
-          </Link>
-        </div>
-      </header>
+      <Navbar />
       <main className="bg-ivory">
-        <section className="bg-navy pb-20 pt-12 sm:pb-28 sm:pt-16">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:px-8">
+        <section className="bg-navy pb-20 sm:pb-28">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pt-28 sm:px-6 sm:pt-32 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:pt-36">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                 Área principal
@@ -30,7 +26,7 @@ export default function PracticePillarPage({ area }: { area: PracticeArea }) {
               </p>
               <a
                 href={`/?area=${area.id}#contacto`}
-                className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-white hover:bg-gold-light"
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-white hover:bg-gold-light sm:w-auto"
               >
                 Consultar esta práctica <ArrowRight className="h-4 w-4" />
               </a>
@@ -89,6 +85,7 @@ export default function PracticePillarPage({ area }: { area: PracticeArea }) {
           </div>
         </nav>
       </main>
+      <Footer />
     </>
   );
 }
