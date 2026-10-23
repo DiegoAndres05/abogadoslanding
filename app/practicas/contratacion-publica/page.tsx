@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import PracticePillarPage from "@/components/PracticePillarPage";
 import { primaryPracticeAreas } from "@/data/practiceAreas";
-import { siteName, siteUrl } from "@/lib/site";
+import { practicePageMetadata } from "@/lib/site";
 
 const area = primaryPracticeAreas[1];
 
-export const metadata: Metadata = {
+export const metadata = practicePageMetadata({
+  path: "/practicas/contratacion-publica",
   title: area.title,
   description: area.description,
-  alternates: { canonical: new URL("/practicas/contratacion-publica", siteUrl).toString() },
-  openGraph: { title: `${area.title} | ${siteName}`, description: area.description, url: "/practicas/contratacion-publica" },
-};
+  image: area.image,
+  imageWidth: 1200,
+  imageHeight: 795,
+});
 
 export default function ContratacionPublicaPage() {
   return <PracticePillarPage area={area} />;
